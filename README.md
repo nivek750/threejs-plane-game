@@ -1,4 +1,4 @@
-# threejs-test
+# The Plane Game
 
 To install and run:
 - Run npm install
