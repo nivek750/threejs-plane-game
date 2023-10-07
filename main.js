@@ -9,6 +9,15 @@ const bulletTexture = textureLoader.load('assets/Tiles/tile_0000.png');
 const position = new THREE.Vector3();
 const targetPosition = new THREE.Vector3();
 
+//background texture
+const backgroundTexture = textureLoader.load('assets/Backgrounds/island.png');
+backgroundTexture.magFilter = THREE.NearestFilter;
+const backgroundMaterial = new THREE.MeshBasicMaterial({ map: backgroundTexture, transparent: true });
+const backgroundMesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 3), backgroundMaterial);
+backgroundMesh.position.y = THREE.MathUtils.randFloat(10, 15);
+backgroundMesh.position.x = THREE.MathUtils.randFloat(-5, 5);
+scene.add(backgroundMesh);
+
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setClearColor('#DFF6F5');
@@ -59,6 +68,15 @@ function animate() {
     // Clamp the target position to the bounds of the screen
     targetPosition.x = THREE.MathUtils.clamp(targetPosition.x, -10, 10);
     targetPosition.y = THREE.MathUtils.clamp(targetPosition.y, -5, 5);
+
+    backgroundMesh.position.y -= 0.02;
+
+    // Check if the background mesh is out of bounds
+    if (backgroundMesh.position.y < -10) {
+        backgroundMesh.position.y = THREE.MathUtils.randFloat(10, 15);
+        // Give background a random x position in between -5 and 5
+        backgroundMesh.position.x = THREE.MathUtils.randFloat(-5, 5);
+    }
 
     if(keys.space && currentTime - lastBulletTime > 200) {
         const bulletMesh = new THREE.Mesh(bulletGeometry, bulletMaterial);
