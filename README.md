@@ -9,3 +9,6 @@ To install and run:
 
 Assets used:
 - https://kenney-assets.itch.io/pixel-shmup
+
+## How to Contribute
+- [Contributing to the game](CONTRIBUTING.md)
