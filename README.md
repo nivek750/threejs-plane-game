@@ -5,3 +5,7 @@
 To install and run:
 - Run npm install
 - Run npx vite
+
+
+Assets used:
+- https://kenney-assets.itch.io/pixel-shmup
