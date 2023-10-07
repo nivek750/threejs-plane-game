@@ -11,7 +11,7 @@ const targetPosition = new THREE.Vector3();
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
-renderer.setClearColor('#77dd77');
+renderer.setClearColor('#DFF6F5');
 document.body.appendChild( renderer.domElement );
 
 const geometry2 = new THREE.PlaneGeometry();
