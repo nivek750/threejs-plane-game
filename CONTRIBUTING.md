@@ -13,6 +13,6 @@ We use github to host code, to track issues and feature requests, as well as acc
 ## We Use [Github Flow], So All Code Changes Happen Through Pull Requests
 Pull requests are the best way to propose changes to the codebase. We actively welcome your pull requests:
 
-1. clone and create your branch from `main`.
+1. fork and create your branch from `main`.
 2. If you've added code that should be tested, add tests.
 3. Issue that pull request!
