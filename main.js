@@ -1,21 +1,17 @@
 import * as THREE from 'three';
+import createBackground from './modules/background';
+import createScene from './modules/scene';
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+const { scene, camera } = createScene();
 const textureLoader = new THREE.TextureLoader();
 
-const texture = textureLoader.load('assets/Ships/ship_0000.png');
+const shipTexture = textureLoader.load('assets/Ships/ship_0000.png');
 const bulletTexture = textureLoader.load('assets/Tiles/tile_0000.png');
 const position = new THREE.Vector3();
 const targetPosition = new THREE.Vector3();
 
 //background texture
-const backgroundTexture = textureLoader.load('assets/Backgrounds/island.png');
-backgroundTexture.magFilter = THREE.NearestFilter;
-const backgroundMaterial = new THREE.MeshBasicMaterial({ map: backgroundTexture, transparent: true });
-const backgroundMesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 3), backgroundMaterial);
-backgroundMesh.position.y = THREE.MathUtils.randFloat(10, 15);
-backgroundMesh.position.x = THREE.MathUtils.randFloat(-5, 5);
+const backgroundMesh = createBackground(textureLoader);
 scene.add(backgroundMesh);
 
 const renderer = new THREE.WebGLRenderer();
@@ -24,8 +20,8 @@ renderer.setClearColor('#DFF6F5');
 document.body.appendChild( renderer.domElement );
 
 const geometry2 = new THREE.PlaneGeometry();
-texture.magFilter = THREE.NearestFilter;
-const material2 = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
+shipTexture.magFilter = THREE.NearestFilter;
+const material2 = new THREE.MeshBasicMaterial({ map: shipTexture, transparent: true });
 const planeMesh = new THREE.Mesh(geometry2, material2);
 scene.add(planeMesh);
 
